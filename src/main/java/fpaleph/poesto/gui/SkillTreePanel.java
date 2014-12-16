@@ -18,19 +18,25 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import fpaleph.poesto.SkillTree;
+
 @SuppressWarnings("serial")
 public class SkillTreePanel extends JPanel implements MouseListener, MouseMotionListener, MouseWheelListener {
 
-	private static final int MAX_OFFSET_X = 200;
-	private static final int MAX_OFFSET_Y = 200;
+	private static int MAX_OFFSET_X = 200;
+	private static int MAX_OFFSET_Y = 200;
 
 	private Point aa, bb, cc;
 	private Paint paint;
+	
+	private SkillTree st;
 
-	public SkillTreePanel() {
+	public SkillTreePanel(SkillTree st) {
 		aa = new Point(0, 0);
 		bb = new Point(0, 0);
 
+		this.st = st;
+		
 		// /home/alex/Workspaces/poesto.alpha/data/Background1.0.3835.png
 		File f = new File("/home/alex/Workspaces/poesto.alpha/data/Background1.0.3835.png");
 		try {

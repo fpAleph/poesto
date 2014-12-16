@@ -1,14 +1,49 @@
 package fpaleph.poesto;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class NodeGroup {
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
+public class NodeGroup implements Serializable {
+
+	/**
+	 * Automatically generated serial version UID.
+	 */
+	private static final long serialVersionUID = 2612653706213856862L;
+	
 	public int id = -1;
-	public Set<Integer> nodes = new HashSet<Integer>();
+	public Set<Integer> nodes = new HashSet<>();
 	public int size = -1;
 	public double x, y = Double.NaN;
+	
+	public NodeGroup() {
+		// defined in order to preserve the null constructor
+	}
+
+	public NodeGroup(int id, JsonObject group) {
+		this.id = id;
+
+		for (JsonElement je : group.getAsJsonArray("n")) {
+			this.nodes.add(je.getAsInt());
+		}
+
+		JsonObject orbitals = group.getAsJsonObject("oo");
+		if (orbitals.has("3")) {
+			this.size = 3;
+		} else if (orbitals.has("2")) {
+			this.size = 2;
+		} else if (orbitals.has("1")) {
+			this.size = 1;
+		} else {
+			this.size = 0;
+		}
+
+		this.x = group.get("x").getAsDouble();
+		this.y = group.get("y").getAsDouble();
+	}
 	
 	@Override
 	public String toString() {

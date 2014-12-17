@@ -36,16 +36,18 @@ public class SkillTreeLayout implements LayoutManager2 {
 
 	@Override
 	public float getLayoutAlignmentX(Container target) {
-		throw new UnsupportedOperationException();
+		return 0.5f;
 	}
 
 	@Override
 	public float getLayoutAlignmentY(Container target) {
-		throw new UnsupportedOperationException();
+		return 0.5f;
 	}
 
 	@Override
 	public void invalidateLayout(Container target) {
+		System.out.println("invalidateLayout:" + target);
+		target.validate();
 	}
 
 	@Override
@@ -70,50 +72,29 @@ public class SkillTreeLayout implements LayoutManager2 {
 			double y = originY + zoom * constraints.getY();
 			
 			Rectangle r = new Rectangle((int) x, (int) y, size.width, size.height);
-			c.setBounds(r);			
+			c.setBounds(r);
 		}
-		
-		/*Insets insets = getInsets();
-		
-		double xOffset = (st.coordMax.x - (double) st.coordMin.x) / 2 - st.coordMax.x;
-		double yOffset = (st.coordMax.y - (double) st.coordMin.y) / 2 - st.coordMax.y;
-		
-		int width = getWidth();
-		int height = getHeight();
-		
-		Dimension size = jLabel.getPreferredSize();
-		
-		double xCoeff = (group.x + xOffset) / (st.coordMax.x + xOffset);
-		double yCoeff = (group.y + yOffset) / (st.coordMax.y + yOffset);
-		
-		double xCenter = insets.left + width * (1 + xCoeff) / 2;
-		double yCenter = insets.top + height * (1 + yCoeff) / 2;
-		
-		System.out.println(xCenter + "x" + yCenter);
-		
-		jLabel.setBounds((int) (xCenter - size.width / 2),
-						 (int) (yCenter - size.height / 2),
-						 (int) (xCenter + size.width / 2),
-						 (int) (yCenter + size.height / 2));
-		jLabel.repaint();
-		jLabel.setVisible(true);
-		jLabel.setOpaque(false);*/
-		
 	}
 
 	@Override
 	public Dimension maximumLayoutSize(Container target) {
-		throw new UnsupportedOperationException();
+		Rectangle r = target.getBounds();
+		System.out.println(r);
+		return new Dimension(r.width, r.height);
 	}
 
 	@Override
 	public Dimension minimumLayoutSize(Container parent) {
-		throw new UnsupportedOperationException();
+		Rectangle r = parent.getBounds();
+		System.out.println(r);
+		return new Dimension(r.width, r.height);
 	}
 
 	@Override
 	public Dimension preferredLayoutSize(Container parent) {
-		throw new UnsupportedOperationException();
+		Rectangle r = parent.getBounds();
+		System.out.println(r);
+		return new Dimension(r.width, r.height);
 	}
 
 	@Override

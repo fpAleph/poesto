@@ -1,6 +1,6 @@
 package fpaleph.poesto.gui.skilltree;
 
-import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,9 +17,14 @@ public class NodePanel extends JPanel {
 
 	public NodePanel(SkillTree st) {
 		setLayout(new SkillTreeLayout(st));
+		setOpaque(false);
 		
-		setBackground(new Color(0, 0, 0, 0));
-		setOpaque(true);
+		// FIXME
+		double zoom = 0.1726;
+		
+		double width = zoom * (st.coordMax.x - st.coordMin.x);
+		double height = zoom * (st.coordMax.y - st.coordMin.y);
+		setSize((int) Math.ceil(width), (int) Math.ceil(height));
 		
 		for (Archetype at : st.archetypes.values()) {
 			Node node = st.nodes.get(at.node);
@@ -27,9 +32,8 @@ public class NodePanel extends JPanel {
 			
 			JLabel jLabel = new JLabel(at.name);
 			add(jLabel, new SkillTreeConstraints(group.x, group.y));
+			jLabel.setVisible(true);
 		}
-		
-		System.out.println(getClass() + ":" + getWidth() + "x" + getHeight());
 	}
 	
 	public static NodePanel load(SkillTree st) {

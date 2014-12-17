@@ -69,6 +69,7 @@ public class LayeredLayout implements LayoutManager {
 		int maxHeight = parent.getHeight() - (insets.top + insets.bottom);
 
 		for (Component c : parent.getComponents()) {
+			System.out.println(c);
 			if (! c.isVisible()) {
 				continue;
 			}

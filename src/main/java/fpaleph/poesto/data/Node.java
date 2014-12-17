@@ -1,4 +1,4 @@
-package fpaleph.poesto;
+package fpaleph.poesto.data;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -83,42 +83,6 @@ public class Node implements Serializable {
 	}
 
 	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("[id=").append(id)
-		  .append(", name=\"").append(name).append('\"')
-		  .append(", type=").append(type)
-		  .append(", group=").append(group)
-		  .append(", icon=").append(icon)
-		  .append(", orbit=").append(orbit)
-		  .append(", station=").append(station)
-		  .append(", neighbors=").append(neighbors)
-		  .append(", description=").append(description)
-		  .append(", root=").append(root)
-		  .append("]");
-		return sb.toString();
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((description == null) ? 0 : description.hashCode());
-		result = prime * result + group;
-		result = prime * result + ((icon == null) ? 0 : icon.hashCode());
-		result = prime * result + id;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result
-				+ ((neighbors == null) ? 0 : neighbors.hashCode());
-		result = prime * result + orbit;
-		result = prime * result + root;
-		result = prime * result + station;
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
-		return result;
-	}
-
-	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -160,5 +124,41 @@ public class Node implements Serializable {
 		if (type != other.type)
 			return false;
 		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((description == null) ? 0 : description.hashCode());
+		result = prime * result + group;
+		result = prime * result + ((icon == null) ? 0 : icon.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result
+				+ ((neighbors == null) ? 0 : neighbors.hashCode());
+		result = prime * result + orbit;
+		result = prime * result + root;
+		result = prime * result + station;
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		return result;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("[id=").append(id)
+		  .append(", name=\"").append(name).append('\"')
+		  .append(", type=").append(type)
+		  .append(", group=").append(group)
+		  .append(", icon=").append(icon)
+		  .append(", orbit=").append(orbit)
+		  .append(", station=").append(station)
+		  .append(", neighbors=").append(neighbors)
+		  .append(", description=").append(description)
+		  .append(", root=").append(root)
+		  .append("]");
+		return sb.toString();
 	}
 }

@@ -1,4 +1,4 @@
-package fpaleph.poesto;
+package fpaleph.poesto.data;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -46,33 +46,6 @@ public class NodeGroup implements Serializable {
 	}
 	
 	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("[id=").append(id)
-		  .append(", nodes=").append(nodes)
-		  .append(", size=").append(size)
-		  .append(", x=").append(x)
-		  .append(", y=").append(y)
-		  .append("]");
-		return sb.toString();
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + id;
-		result = prime * result + ((nodes == null) ? 0 : nodes.hashCode());
-		result = prime * result + size;
-		long temp;
-		temp = Double.doubleToLongBits(x);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(y);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		return result;
-	}
-
-	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -95,6 +68,33 @@ public class NodeGroup implements Serializable {
 		if (Double.doubleToLongBits(y) != Double.doubleToLongBits(other.y))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + ((nodes == null) ? 0 : nodes.hashCode());
+		result = prime * result + size;
+		long temp;
+		temp = Double.doubleToLongBits(x);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(y);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("[id=").append(id)
+		  .append(", nodes=").append(nodes)
+		  .append(", size=").append(size)
+		  .append(", x=").append(x)
+		  .append(", y=").append(y)
+		  .append("]");
+		return sb.toString();
 	}
 
 }

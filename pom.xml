@@ -17,7 +17,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>fpaleph.poesto.Main</mainClass>
+              <mainClass>fpaleph.poesto.Poesto</mainClass>
             </manifest>
           </archive>
         </configuration>
@@ -51,7 +51,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>fpaleph.poesto.Main</mainClass>
+              <mainClass>fpaleph.poesto.Poesto</mainClass>
             </manifest>
           </archive>
         </configuration>

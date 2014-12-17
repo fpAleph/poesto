@@ -1,4 +1,4 @@
-package fpaleph.poesto;
+package fpaleph.poesto.data;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
-public class Character implements Serializable {
+public class Archetype implements Serializable {
 	
 	private static Map<String, String> names = new HashMap<>();
 	static {
@@ -31,11 +31,11 @@ public class Character implements Serializable {
 	public int node = -1;
 	public int s, d, i = -1;
 
-	public Character() {
+	public Archetype() {
 		// defined in order to preserve the null constructor
 	}
 	
-	public Character(int id, JsonObject character, JsonObject classes, int nodeId) {
+	public Archetype(int id, JsonObject character, JsonObject classes, int nodeId) {
 		this.id = id;
 		this.s = character.get("base_str").getAsInt();
 		this.d = character.get("base_dex").getAsInt();
@@ -53,35 +53,10 @@ public class Character implements Serializable {
 				break;
 			}
 		}
+		
+		this.node = nodeId;
 	}
 	
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append('[')
-		  .append("id=").append(id)
-		  .append(", name=\"").append(name).append("\"")
-		  .append(", node=").append(node)
-	      .append(", str=").append(s)
-		  .append(", dex=").append(d)
-		  .append(", int=").append(i)
-		  .append(']');
-		return sb.toString();
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + d;
-		result = prime * result + i;
-		result = prime * result + id;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + node;
-		result = prime * result + s;
-		return result;
-	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -90,7 +65,7 @@ public class Character implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Character other = (Character) obj;
+		Archetype other = (Archetype) obj;
 		if (d != other.d)
 			return false;
 		if (i != other.i)
@@ -107,6 +82,33 @@ public class Character implements Serializable {
 		if (s != other.s)
 			return false;
 		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + d;
+		result = prime * result + i;
+		result = prime * result + id;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + node;
+		result = prime * result + s;
+		return result;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append('[')
+		  .append("id=").append(id)
+		  .append(", name=\"").append(name).append("\"")
+		  .append(", node=").append(node)
+	      .append(", str=").append(s)
+		  .append(", dex=").append(d)
+		  .append(", int=").append(i)
+		  .append(']');
+		return sb.toString();
 	}
 
 }
